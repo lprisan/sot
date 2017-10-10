@@ -178,7 +178,7 @@ if (mediaPlaybackRequiresUserGesture()) {
     }
 
     setupTimer(fiveMinutes, display, url);
-    document.getElementById('button').onclick=function(){startTimer(fiveMinutes, display, url);document.getElementById('button').disabled=true;}
+    document.getElementById('button').onclick=function(){document.getElementById('alarm').play();startTimer(fiveMinutes, display, url);document.getElementById('button').disabled=true;}
 
 };
 </script>
