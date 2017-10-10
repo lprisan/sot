@@ -31,6 +31,7 @@
 
         <header>
           <h2>Simple Observer Timer</h2>
+          <button id="button">Click to start</button>
           <h1 id="message"><span id="timeleft"></span> left for alarm...</h1>
         </header>
         <hr>
@@ -81,7 +82,24 @@ function playSound(sound) {
     sounds[sound].play();
 }
 
+function setupTimer(duration, display, linkurl){
+    var timer = duration, minutes, seconds;
+    var link = document.getElementById('link');
+    link.href = linkurl;
 
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        var pretitle = document.title.substring(document.title.indexOf(" | "));
+        //update also the title
+        document.title = minutes + ":" + seconds + " " + pretitle;
+
+}
 
 function startTimer(duration, display, linkurl) {
     var timer = duration, minutes, seconds;
@@ -137,7 +155,6 @@ window.onload = function () {
 for (var i = 0; i < audioElements.length; i++) {
     sounds[audioElements[i].className] = audioElements[i];
 }
-
 // Solves chrome for andriod issue 178297 Require user gesture
 // https://code.google.com/p/chromium/issues/detail?id=178297
 // Fix based on code from http://blog.foolip.org/2014/02/10/media-playback-restrictions-in-blink/
@@ -147,8 +164,6 @@ if (mediaPlaybackRequiresUserGesture()) {
     window.addEventListener('touchstart', removeBehaviorsRestrictions);
 }
 ///////////////
-
-
 
 
     var fiveMinutes = 60 * 5,
@@ -162,7 +177,9 @@ if (mediaPlaybackRequiresUserGesture()) {
         url = decodeURIComponent(getParameterByName('url'));
     }
 
-    startTimer(fiveMinutes, display, url);
+    setupTimer(fiveMinutes, display, url);
+    document.getElementById('button').onclick=function(){startTimer(fiveMinutes, display, url);document.getElementById('button').disabled=true;}
+
 };
 </script>
 
