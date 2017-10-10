@@ -11,16 +11,16 @@
     <![endif]-->
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Welcome to GitHub Pages | sot</title>
-<meta property="og:title" content="Welcome to GitHub Pages" />
+<title> | Simple Observer Timer</title>
+<meta property="og:title" content="Simple Observer Timer" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="SOT is the acronym of “simple observer timer”, it takes as parameters an URL of a link to display in a new browser tab (e.g., the observer form), and the number of minutes to periodically sound an alarm." />
-<meta property="og:description" content="SOT is the acronym of “simple observer timer”, it takes as parameters an URL of a link to display in a new browser tab (e.g., the observer form), and the number of minutes to periodically sound an alarm." />
+<meta name="description" content="SOT is the acronym of “simple observer timer”, it takes as parameters a number of minutes upon which an alarm will sound, and maybe an URL of a link to display in a new browser tab (e.g., the observer form)." />
+<meta property="og:description" content="SOT is the acronym of “simple observer timer”, it takes as parameters a number of minutes upon which an alarm will sound, and maybe an URL of a link to display in a new browser tab (e.g., the observer form)." />
 <link rel="canonical" href="https://lprisan.github.io/sot/" />
 <meta property="og:url" content="https://lprisan.github.io/sot/" />
 <meta property="og:site_name" content="sot" />
 <script type="application/ld+json">
-{"name":"sot","description":"SOT is the acronym of “simple observer timer”, it takes as parameters an URL of a link to display in a new browser tab (e.g., the observer form), and the number of minutes to periodically sound an alarm.","author":null,"@type":"WebSite","url":"https://lprisan.github.io/sot/","image":null,"publisher":null,"headline":"Welcome to GitHub Pages","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":"sot","description":"SOT is the acronym of “simple observer timer”, it takes as parameters a number of minutes upon which an alarm will sound, and maybe an URL of a link to display in a new browser tab (e.g., the observer form).","author":null,"@type":"WebSite","url":"https://lprisan.github.io/sot/","image":null,"publisher":null,"headline":"Simple Observer Timer","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -30,67 +30,62 @@
       <div class="inner">
 
         <header>
-          <h1>Welcome to GitHub Pages :)</h1>
-          <h2>SOT is the acronym of "simple observer timer", it takes as parameters an URL of a link to display in a new browser tab (e.g., the observer form), and the number of minutes to periodically sound an alarm.</h2>
+          <h1>Simple Observer Timer</h1>
+          <h2 id="message"><span id="timeleft"></span> left for alarm...</h2>
         </header>
-        <section id="downloads" class="clearfix">
-          
-	  
-          <a href="https://github.com/lprisan/sot" id="view-on-github" class="button"><span>View on GitHub</span></a>
-	  
-        </section>
         <hr>
         <section id="main_content">
-          <h2 id="welcome-to-github-pages">Welcome to GitHub Pages</h2>
-
-<p>You can use the <a href="https://github.com/lprisan/sot/edit/master/README.md">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
-
-<p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
-
-<h3 id="markdown">Markdown</h3>
-
-<p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
-
-<div class="language-markdown highlighter-rouge"><pre class="highlight"><code>Syntax highlighted code block
-
-<span class="gh"># Header 1</span>
-<span class="gu">## Header 2</span>
-<span class="gu">### Header 3</span>
-<span class="p">
--</span> Bulleted
-<span class="p">-</span> List
-<span class="p">
-1.</span> Numbered
-<span class="p">2.</span> List
-
-<span class="gs">**Bold**</span> and _Italic_ and <span class="sb">`Code`</span> text
-
-<span class="p">[</span><span class="nv">Link</span><span class="p">](</span><span class="sx">url</span><span class="p">)</span> and !<span class="p">[</span><span class="nv">Image</span><span class="p">](</span><span class="sx">src</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>For more details see <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a>.</p>
-
-<h3 id="jekyll-themes">Jekyll Themes</h3>
-
-<p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/lprisan/sot/settings">repository settings</a>. The name of this theme is saved in the Jekyll <code class="highlighter-rouge">_config.yml</code> configuration file.</p>
-
-<h3 id="support-or-contact">Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/categories/github-pages-basics/">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<h3>You can also go to the <a id="link" href="http://tinyurl.com/linnaruum-observer" target="_new">observer form</a> (opens a new browser tab).</h3s>
 
         </section>
 
         <footer>
-        
-          sot is maintained by <a href="https://github.com/lprisan">lprisan</a><br>
-        
+
+          SOT is maintained by <a href="https://github.com/lprisan">lprisan</a><br>
+
           This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.
         </footer>
 
       </div>
     </div>
 
-    
+<script type="javascript">
+function startTimer(duration, display) {
+    var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+    function timer() {
+        // get the number of seconds that have elapsed since
+        // startTimer() was called
+        diff = duration - (((Date.now() - start) / 1000) | 0);
+
+        // does the same job as parseInt truncates the float
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (diff <= 0) {
+            // add one second so that the count down starts at the full duration
+            // example 05:00 not 04:59
+            start = Date.now() + 1000;
+        }
+    };
+    // we don't want to wait a full second before the timer starts
+    timer();
+    setInterval(timer, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#timeleft');
+    startTimer(fiveMinutes, display);
+};
+</script>
+
   </body>
 </html>
