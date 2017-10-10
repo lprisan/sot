@@ -64,6 +64,10 @@ function startTimer(duration, display, linkurl) {
 
         display.textContent = minutes + ":" + seconds;
 
+        var pretitle = document.title.substring(document.title.indexOf(" | "));
+        //update also the title
+        document.title = minutes + ":" + seconds + " " + pretitle;
+
         if (--timer < 0) {
             timer = duration;
             document.getElementById('alarm').play();
